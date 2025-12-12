@@ -1,0 +1,597 @@
+/* ============================= */
+/* RESET BÁSICO                  */
+/* ============================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: #020617;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", system-ui,
+    sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: #eab308;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ============================= */
+/* CONTAINERS E LAYOUT GERAL     */
+/* ============================= */
+
+.main-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+main {
+  flex: 1;
+  padding: 2rem 0 3rem;
+}
+
+/* ============================= */
+/* CABEÇALHO                     */
+/* ============================= */
+
+.site-header {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-block: 0.9rem;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-mark {
+  width: 52px;
+  height: auto;
+}
+
+.logo-text-main {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.logo-text-sub {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: #e5e7eb;
+}
+
+.site-nav a:hover {
+  color: #facc15;
+}
+
+/* menu em telas menores */
+@media (max-width: 800px) {
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+}
+
+/* ============================= */
+/* RODAPÉ                        */
+/* ============================= */
+
+.site-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 1.4rem 0 1.8rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* ============================= */
+/* TIPOGRAFIA E SEÇÕES           */
+/* ============================= */
+
+.page-title {
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+}
+
+.page-subtitle {
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+  max-width: 60rem;
+}
+
+.section {
+  margin-top: 4rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.section-link {
+  font-size: 0.9rem;
+}
+
+/* ============================= */
+/* BOTÕES                        */
+/* ============================= */
+
+.btn-primary {
+  background: #eab308;
+  color: #0f172a;
+  padding: 0.65rem 1.2rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #facc15;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #eab308;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  border: 1px solid #eab308;
+}
+
+.btn-secondary:hover {
+  background: rgba(234, 179, 8, 0.1);
+}
+
+/* ============================= */
+/* HERO (TEXTO + CARROSSEL)      */
+/* ============================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 2.4fr);
+  gap: 3rem;
+  align-items: stretch; /* texto e banner na mesma altura */
+  padding-top: 2.4rem;
+}
+
+.hero-text {
+  max-width: 40rem;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  margin-bottom: 0.75rem;
+  color: #e5e7eb;
+}
+
+.hero-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ============================= */
+/* CARROSSEL EM FORMATO BANNER   */
+/* ============================= */
+
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 640px;      /* mais largo, visual de banner */
+  aspect-ratio: 16 / 9;  /* formato horizontal */
+  border-radius: 1rem;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.75);
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1.2rem 1.4rem;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.95),
+    rgba(15, 23, 42, 0.4),
+    transparent
+  );
+  color: #f9fafb;
+}
+
+.hero-slide-overlay h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.hero-slide-overlay p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 0.3rem;
+}
+
+.hero-slide-cta {
+  font-size: 0.85rem;
+  color: #eab308;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 0.9rem;
+  right: 1.1rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(148, 163, 184, 0.5);
+  padding: 0;
+  cursor: pointer;
+}
+
+.hero-dot.is-active {
+  width: 18px;
+  background: #eab308;
+}
+
+/* hero responsivo */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-carousel {
+    max-width: 100%;
+    margin-inline: auto;
+  }
+}
+
+/* ============================= */
+/* LISTA DE ARTIGOS / CARDS      */
+/* ============================= */
+
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.article-card {
+  padding: 1.3rem 1.4rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 41, 59, 0.5),
+    rgba(15, 23, 42, 0.5)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.article-meta {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.article-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.article-summary {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-category-link {
+  color: #eab308;
+}
+
+.article-category-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* PÁGINA DE ARTIGO INDIVIDUAL   */
+/* ============================= */
+
+.article-container {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding-top: 0.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.article-title-main {
+  margin-top: 0.4rem;
+}
+
+.article-body {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.article-body p {
+  margin-bottom: 1rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.article-nav {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  padding-top: 1.3rem;
+}
+
+.article-back-link {
+  font-size: 0.92rem;
+  color: #e5e7eb;
+}
+
+.article-back-link:hover {
+  text-decoration: underline;
+}
+
+.article-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+}
+
+.article-nav-link {
+  font-size: 0.9rem;
+  color: #eab308;
+}
+
+.article-nav-link:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* FORMULÁRIO ADMIN              */
+/* ============================= */
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 48rem;
+}
+
+.admin-form label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+.admin-form textarea {
+  min-height: 140px;
+}
+
+.admin-message {
+  margin-top: 1rem;
+  color: #eab308;
+  font-weight: 600;
+}
+
+/* ============================= */
+/* PÁGINA CURRÍCULO LATTES       */
+/* ============================= */
+
+.lattes-section {
+  padding-top: 2rem;
+}
+
+.lattes-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.lattes-card {
+  background: #020617;
+  border-radius: 1rem;
+  padding: 1.6rem 1.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
+
+.lattes-card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+}
+
+.lattes-card p {
+  margin-bottom: 0.7rem;
+}
+
+.lattes-card ul {
+  margin-left: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+
+.lattes-card li {
+  margin-bottom: 0.25rem;
+}
+
+.lattes-buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.lattes-iframe-wrapper {
+  background: #020617;
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+}
+
+.lattes-iframe-header {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  margin-bottom: 0.6rem;
+}
+
+.lattes-iframe {
+  width: 100%;
+  min-height: 560px;
+  border: none;
+  border-radius: 0.8rem;
+  background: #ffffff;
+}
+
+.lattes-iframe-note {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* responsivo da página Lattes */
+@media (max-width: 900px) {
+  .lattes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lattes-iframe-wrapper {
+    order: -1; /* iframe aparece primeiro em telas pequenas */
+  }
+}
+
+/* ============================= */
+/* RESPONSIVO GLOBAL             */
+/* ============================= */
+
+@media (max-width: 600px) {
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .articles-list {
+    padding-inline: 0.4rem;
+  }
+}

@@ -1,0 +1,9 @@
+npx prisma studio
+
+Ele vai abrir uma página no navegador (algo como http://localhost:5555).
+
+No menu lateral, clique em Article.
+
+Você verá uma tabela com todos os artigos que já publicou.
+
+Encontre o artigo cuja data deseja ajustar (pode filtrar pelo título ou olhar o conteúdo)
